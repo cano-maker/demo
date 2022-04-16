@@ -12,6 +12,7 @@ import java.time.Period;
 @AllArgsConstructor
 @Entity
 @Table
+@Setter
 public class Student
 {
     @Id

@@ -1,7 +1,6 @@
 package com.example.demo.student;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,4 +28,19 @@ public class StudentController
     {
         studentService.deleteStudent(studentId);
     }
+
+    @PutMapping(path = "{studentId}")
+    public void updateStudent(@PathVariable("studentId") Long studentId,
+                              @RequestBody Student student){
+        studentService.updateStudent(studentId, student);
+    }
+
+    @PutMapping(path = "update/{studentId}")
+    public void updateStudentV2(@PathVariable("studentId") Long studentId,
+                              @RequestParam(required = false) String name,
+                              @RequestParam(required = false) String email)
+    {
+        studentService.updateStudent(studentId, name, email);
+    }
+
 }
