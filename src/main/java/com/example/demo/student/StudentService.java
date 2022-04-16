@@ -21,8 +21,10 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public void addNewStudent(Student student)
-    {
-        log.info("student: {}", student);
+    public void addNewStudent(Student student) {
+        var studentFound = studentRepository.findStudentByEmail(student.getEmail());
+        if(studentFound.isPresent())
+            throw new IllegalStateException("Email taken");
+        studentRepository.save(student);
     }
 }
