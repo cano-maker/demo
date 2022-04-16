@@ -4,12 +4,12 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 @Builder
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table
 public class Student
@@ -26,7 +26,13 @@ public class Student
     )
     private Long id;
     private String name;
+    @Transient
+    @Getter(AccessLevel.NONE)
     private Integer age;
     private LocalDate dob;
     private String email;
+
+    public Integer getAge() {
+        return Period.between(dob, LocalDate.now()).getYears();
+    }
 }

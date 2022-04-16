@@ -19,13 +19,11 @@ public class StudentConfig
                     .name("Mariam")
                     .email("mariam.jamal@gmail.com")
                     .dob(LocalDate.of(2000, Month.JANUARY, 5))
-                    .age(21)
                     .build();
             Student alex = Student.builder()
                     .name("Alex")
                     .email("alex@gmail.com")
                     .dob(LocalDate.of(2004, Month.APRIL, 3))
-                    .age(25)
                     .build();
 
             repository.saveAll(
